@@ -62,23 +62,22 @@ app.get("/api/persons/:id", (request, response) => {
 })
 
 app.post("/api/persons", (request, response) => {
-  const person = request.body
-  const name_exists = persons.some(p => p.name === person.name)
-
-  if(!person.name) {
+  const body = request.body
+  if(!body.name) {
     return response.status(400).json({error: "name missing"})
   }
-  if (!person.number) {
+  if (!body.number) {
     return response.status(400).json({error: "number missing"})
   }
-  if (name_exists) {
-    return response.status(400).json({error: "name must be unique"})
-  }
 
-  const id = Math.floor(Math.random() * 1000000)
-  person.id = id
-  persons = persons.concat(person)
-  response.json(person)
+  const person = new Person({
+    name: body.name,
+    number: body.number
+  })
+
+  person.save().then(savedPerson => {
+    response.json(savedPerson)
+  })
 })
 
 app.delete("/api/persons/:id", (request, response) => {
