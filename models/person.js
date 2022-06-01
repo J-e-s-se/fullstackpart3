@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const uri = process.env.MONGODB_URI
 
 mongoose.connect(uri)
-  .then(result => {
+  .then(() => {
     console.log('connected to MongoDB')
   })
   .catch(error => {
@@ -12,7 +12,7 @@ mongoose.connect(uri)
 
 const personSchema = new mongoose.Schema({
   name: {
-    type: String, 
+    type: String,
     minLength: 3,
     required: true
   },
