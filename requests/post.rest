@@ -1,10 +1,4 @@
-POST http://localhost:3001/api/persons
-Content-Type: application/json
-
-{
-  "name": "Arto Hellas", 
-  "number": "040-123456"
-}
+GET http://localhost:3001/api/persons
 
 ###
 POST http://localhost:3001/api/persons
@@ -19,5 +13,30 @@ POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-  "name": "Arto Hellas"
+  "name": "Arto Hellas",
+  "number": "29-90"
 }
+
+###
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+  {
+    "name": "Elijah",
+    "number": "33-90"
+  }
+
+
+###
+
+PUT http://localhost:3001/api/persons/62978fc13047d4d3d8e71ebf
+Content-Type: application/json
+
+  {
+    "name": "Melody Praise",
+    "number": "298-28258298",
+    "id": "62978fc13047d4d3d8e71ebf"
+  }
+
+###
+GET  http://localhost:3001/api/persons/6295030ca29808b138fcbc0c
